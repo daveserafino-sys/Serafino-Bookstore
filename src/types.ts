@@ -29,8 +29,16 @@ export interface Publication {
   downloads?: number;
 }
 
+export interface PaymentMerchantConfig {
+  paypalEmail: string;
+  bankName: string;
+  bankAccountNumber: string;
+  bankRoutingNumber: string;
+}
+
 export interface WriterData {
   books: Book[];
   publications: Publication[];
   paypalEmails?: PaypalEmail[];
+  merchantConfig?: PaymentMerchantConfig;
 }

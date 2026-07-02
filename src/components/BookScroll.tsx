@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Book } from "../types";
+import { Book, PaymentMerchantConfig } from "../types";
 import { Download } from "lucide-react";
 import PaymentPanel from "./PaymentPanel";
 
 interface BookScrollProps {
   books: Book[];
   scrollY: number;
+  merchantConfig?: PaymentMerchantConfig;
 }
 
-export default function BookScroll({ books, scrollY }: BookScrollProps) {
+export default function BookScroll({ books, scrollY, merchantConfig }: BookScrollProps) {
   const [activePayment, setActivePayment] = useState<{
     book: Book;
     format: "pdf" | "epub";
@@ -87,6 +88,7 @@ export default function BookScroll({ books, scrollY }: BookScrollProps) {
           <PaymentPanel
             book={activePayment.book}
             format={activePayment.format}
+            merchantConfig={merchantConfig}
             onClose={() => setActivePayment(null)}
             onSuccess={() => {
               window.location.href = `/api/download/${activePayment.book.id}/${activePayment.format}`;

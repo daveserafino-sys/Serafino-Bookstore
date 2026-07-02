@@ -22,7 +22,7 @@ export default function AdminPanel({
   
   // Local working copy of state
   const [localData, setLocalData] = useState<WriterData>({ books: [], publications: [], paypalEmails: [] });
-  const [activeTab, setActiveTab] = useState<"books" | "publications" | "emails">("books");
+  const [activeTab, setActiveTab] = useState<"books" | "publications" | "emails" | "merchant">("books");
   const [uploadingFor, setUploadingFor] = useState<{ id: string; type: "book" | "pub"; field: "pdf" | "epub" } | null>(null);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -39,6 +39,14 @@ export default function AdminPanel({
     // Attempt authentication by cloning the real data
     const parsedData = JSON.parse(JSON.stringify(writerData));
     if (!parsedData.paypalEmails) parsedData.paypalEmails = [];
+    if (!parsedData.merchantConfig) {
+      parsedData.merchantConfig = {
+        paypalEmail: "daveserafino@gmail.com",
+        bankName: "Citadel Credit Union",
+        bankAccountNumber: "198827",
+        bankRoutingNumber: "231380104"
+      };
+    }
     setLocalData(parsedData);
     setIsAuthenticated(true);
     setError(null);
@@ -82,6 +90,21 @@ export default function AdminPanel({
     setLocalData(prev => ({
       ...prev,
       books: prev.books.map(b => b.id === id ? { ...b, [field]: value } : b)
+    }));
+  };
+
+  const updateMerchantField = (field: string, value: string) => {
+    setLocalData(prev => ({
+      ...prev,
+      merchantConfig: {
+        ...(prev.merchantConfig || {
+          paypalEmail: "daveserafino@gmail.com",
+          bankName: "Citadel Credit Union",
+          bankAccountNumber: "198827",
+          bankRoutingNumber: "231380104"
+        }),
+        [field]: value
+      }
     }));
   };
 
@@ -304,6 +327,16 @@ export default function AdminPanel({
                 >
                   COLLECTED EMAILS
                 </button>
+                <button
+                  onClick={() => setActiveTab("merchant")}
+                  className={`py-2 text-[10px] font-mono tracking-wider transition-all border-b-2 cursor-pointer ${
+                    activeTab === "merchant"
+                      ? "text-[#8C7A5B] border-[#8C7A5B] font-semibold"
+                      : "text-[#625E57]/50 border-transparent hover:text-[#23211E]"
+                  }`}
+                >
+                  MERCHANT ACCOUNTS
+                </button>
               </div>
 
               <div className="flex items-center gap-3">
@@ -525,7 +558,7 @@ export default function AdminPanel({
                     </div>
                   ))}
                 </div>
-              ) : (
+              ) : activeTab === "emails" ? (
                 /* Collected Emails tab */
                 <div className="space-y-4">
                   <div className="flex justify-between items-center pb-2 border-b border-[#8C7A5B]/15">
@@ -576,6 +609,79 @@ export default function AdminPanel({
                       </table>
                     </div>
                   )}
+                </div>
+              ) : (
+                /* Merchant configuration tab */
+                <div className="space-y-6">
+                  <div className="pb-2 border-b border-[#8C7A5B]/15">
+                    <h4 className="text-sm font-serif italic text-[#23211E] font-medium">Merchant & Payments Integration</h4>
+                    <p className="text-[10px] font-mono tracking-wider text-[#8C7A5B] mt-0.5 uppercase">
+                      Configure your payout destinations for books and story purchase transactions
+                    </p>
+                  </div>
+
+                  <div className="bg-[#FAF8F5] border border-[#8C7A5B]/15 p-5 rounded-lg space-y-4">
+                    <div className="text-xs font-mono text-[#8C7A5B] uppercase tracking-widest font-semibold border-b border-[#8C7A5B]/10 pb-2">
+                      PayPal Destination Account
+                    </div>
+                    <div className="space-y-1">
+                      <label className="text-[10px] font-mono tracking-wider text-[#625E57] block">PAYPAL EMAIL ADDRESS</label>
+                      <input
+                        type="email"
+                        value={localData.merchantConfig?.paypalEmail || ""}
+                        onChange={(e) => updateMerchantField("paypalEmail", e.target.value)}
+                        className="w-full bg-white border border-stone-200 focus:border-[#8C7A5B] px-3 py-1.5 rounded text-xs font-mono text-[#23211E] focus:outline-none"
+                        placeholder="daveserafino@gmail.com"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="bg-[#FAF8F5] border border-[#8C7A5B]/15 p-5 rounded-lg space-y-4">
+                    <div className="text-xs font-mono text-[#8C7A5B] uppercase tracking-widest font-semibold border-b border-[#8C7A5B]/10 pb-2">
+                      Direct Deposit / Bank Details (Stripe Payouts)
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div className="space-y-1">
+                        <label className="text-[10px] font-mono tracking-wider text-[#625E57] block">BANK NAME</label>
+                        <input
+                          type="text"
+                          value={localData.merchantConfig?.bankName || ""}
+                          onChange={(e) => updateMerchantField("bankName", e.target.value)}
+                          className="w-full bg-white border border-stone-200 focus:border-[#8C7A5B] px-3 py-1.5 rounded text-xs font-mono text-[#23211E] focus:outline-none"
+                          placeholder="Citadel Credit Union"
+                        />
+                      </div>
+
+                      <div className="space-y-1">
+                        <label className="text-[10px] font-mono tracking-wider text-[#625E57] block">ACCOUNT NUMBER</label>
+                        <input
+                          type="text"
+                          value={localData.merchantConfig?.bankAccountNumber || ""}
+                          onChange={(e) => updateMerchantField("bankAccountNumber", e.target.value)}
+                          className="w-full bg-white border border-stone-200 focus:border-[#8C7A5B] px-3 py-1.5 rounded text-xs font-mono text-[#23211E] focus:outline-none"
+                          placeholder="198827"
+                        />
+                      </div>
+
+                      <div className="space-y-1">
+                        <label className="text-[10px] font-mono tracking-wider text-[#625E57] block">ROUTING NUMBER (9 DIGITS)</label>
+                        <input
+                          type="text"
+                          value={localData.merchantConfig?.bankRoutingNumber || ""}
+                          onChange={(e) => updateMerchantField("bankRoutingNumber", e.target.value)}
+                          className="w-full bg-white border border-stone-200 focus:border-[#8C7A5B] px-3 py-1.5 rounded text-xs font-mono text-[#23211E] focus:outline-none"
+                          placeholder="231380104"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-amber-50/50 border border-amber-200/50 rounded-md flex gap-3 text-amber-900">
+                    <span className="text-sm font-mono font-bold mt-0.5">ℹ</span>
+                    <p className="text-[10px] font-mono leading-relaxed text-amber-800">
+                      <strong>Integration Note:</strong> All payments made by readers via the storefront payment modal will route dynamically according to these configurations. Click <strong>SYNC WORK</strong> at the top right to persist account changes to your cloud database.
+                    </p>
+                  </div>
                 </div>
               )}
             </div>

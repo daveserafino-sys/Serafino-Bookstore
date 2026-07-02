@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { CreditCard, Mail, Lock, Check, X } from "lucide-react";
+import { Book, PaymentMerchantConfig } from "../types";
 
 interface PaymentPanelProps {
   book: { id: string; title: string; price: number };
   format: "pdf" | "epub";
+  merchantConfig?: PaymentMerchantConfig;
   onClose: () => void;
   onSuccess: () => void;
 }
 
-export default function PaymentPanel({ book, format, onClose, onSuccess }: PaymentPanelProps) {
+export default function PaymentPanel({ book, format, merchantConfig, onClose, onSuccess }: PaymentPanelProps) {
   const [paymentMethod, setPaymentMethod] = useState<"stripe" | "paypal">("stripe");
   const [cardNumber, setCardNumber] = useState("");
   const [expiry, setExpiry] = useState("");

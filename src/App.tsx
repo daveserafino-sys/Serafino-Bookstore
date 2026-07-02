@@ -245,6 +245,7 @@ export default function App() {
             <BookScroll
               books={writerData.books}
               scrollY={scrollY}
+              merchantConfig={writerData.merchantConfig}
             />
           </div>
         )}

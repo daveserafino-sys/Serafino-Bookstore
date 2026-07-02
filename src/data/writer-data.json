@@ -164,5 +164,11 @@
       "pdfUrl": "uploads/publications/victimization-retreat.pdf",
       "epubUrl": "uploads/publications/victimization-retreat.epub"
     }
-  ]
+  ],
+  "merchantConfig": {
+    "paypalEmail": "daveserafino@gmail.com",
+    "bankName": "Citadel Credit Union",
+    "bankAccountNumber": "198827",
+    "bankRoutingNumber": "231380104"
+  }
 }
