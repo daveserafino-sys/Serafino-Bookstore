@@ -1,0 +1,6 @@
+{
+  "name": "Writer Portfolio and Bookstore",
+  "description": "An elegant, atmospheric writer website for showing manuscripts and selected publications with an integrated admin panel.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

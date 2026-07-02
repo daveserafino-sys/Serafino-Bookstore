@@ -1,0 +1,37 @@
+interface BackgroundProps {
+  isNoirMode?: boolean;
+  scrollY?: number;
+  viewportHeight?: number;
+}
+
+export default function Background({ isNoirMode = true, scrollY = 0, viewportHeight = 800 }: BackgroundProps) {
+  // Parallax translation for the background image
+  // It translates upwards as the user scrolls, pulling the desk into view.
+  const maxTranslation = viewportHeight * 1.2;
+  const parallaxY = -Math.min(scrollY * 0.6, maxTranslation); 
+
+  return (
+    <div className="fixed inset-0 w-full h-screen z-0 select-none overflow-hidden bg-[#0a0f16]">
+      {/* Background Room/Desk Image (Scaled & Positioned nicely to cover viewport) */}
+      <div 
+        className="absolute inset-0 w-full h-[220vh] transition-transform duration-300 ease-out bg-cover bg-center select-none"
+        style={{ 
+          backgroundImage: "url('/src/assets/Study%20background.png')",
+          transform: `translate3d(0, ${parallaxY}px, 0)`,
+          willChange: "transform",
+          filter: isNoirMode ? "grayscale(100%) contrast(105%) brightness(40%)" : "contrast(100%) brightness(55%)",
+          imageRendering: "auto"
+        }}
+        id="room-background-img"
+      />
+
+      {/* Retro Noir Heavy Vignette Overlay (Darkened outer borders) */}
+      <div className="absolute inset-0 pointer-events-none z-10 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(4,6,9,0.95)_100%)]" />
+
+      {/* Atmospheric color bleed overlay (Subtle warm amber lighting in color mode) */}
+      {!isNoirMode && (
+        <div className="absolute inset-0 pointer-events-none z-15 bg-gradient-to-b from-[#8C7A5B]/5 via-transparent to-[#1a1308]/20 mix-blend-color-burn" />
+      )}
+    </div>
+  );
+}

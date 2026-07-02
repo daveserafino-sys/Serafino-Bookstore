@@ -1,0 +1,32 @@
+interface BackgroundProps {
+  isNoirMode?: boolean;
+  scrollY?: number;
+}
+
+export default function Background({ isNoirMode = true, scrollY = 0 }: BackgroundProps) {
+  // Parallax translation for the background image
+  // It translates upwards as the user scrolls, pulling the desk into view
+  const parallaxY = -Math.min(scrollY * 0.5, 800); 
+
+  return (
+    <div className="fixed inset-0 w-full h-screen z-0 select-none overflow-hidden bg-[#0a0f16]">
+      {/* Main atmospheric image - premium old, washed-out silver halide movie still with the light cord, lightbulb, and desk */}
+      <img 
+        src="/noir_empty_chamber.jpg"
+        alt="Noir Interrogation Scene"
+        referrerPolicy="no-referrer"
+        className="absolute inset-0 w-full h-[220vh] object-cover transition-transform duration-300 ease-out"
+        style={{ 
+          filter: "grayscale(100%) contrast(112%) brightness(82%) sepia(10%) blur(1.5px)",
+          opacity: isNoirMode ? 0.85 : 0.95,
+          transform: `translate3d(0, ${parallaxY}px, 0)`,
+          willChange: "transform"
+        }}
+      />
+
+      {/* Soft Vignette Overlay: Fades to a cool silvery/blue-gray at the edges to mimic a vintage photograph with natural lens vignette */}
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(0,0,0,0)_88%,rgba(28,36,48,0.3)_95%,rgba(32,42,54,0.6)_100%)] z-10" />
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-[rgba(32,42,54,0.04)] via-transparent to-[rgba(24,32,44,0.35)] z-10" />
+    </div>
+  );
+}

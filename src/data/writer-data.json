@@ -1,0 +1,168 @@
+{
+  "books": [
+    {
+      "id": "corilocho",
+      "title": "Corilocho",
+      "price": 0,
+      "pdfUrl": "",
+      "epubUrl": "",
+      "pdfFileName": "corilocho-sample.pdf",
+      "epubFileName": "corilocho-sample.epub"
+    },
+    {
+      "id": "saltwater-archives",
+      "title": "Saltwater Archives",
+      "price": 1,
+      "pdfUrl": "",
+      "epubUrl": "",
+      "pdfFileName": "saltwater-archives-full.pdf",
+      "epubFileName": "saltwater-archives-full.epub"
+    },
+    {
+      "id": "we-are-sympathetic",
+      "title": "We Are Sympathetic",
+      "price": 2,
+      "pdfUrl": "",
+      "epubUrl": "",
+      "pdfFileName": "we-are-sympathetic-full.pdf",
+      "epubFileName": "we-are-sympathetic-full.epub"
+    }
+  ],
+  "publications": [
+    {
+      "id": "trapeze-artist",
+      "title": "Trapeze Artist",
+      "outlet": "Los Angeles Review",
+      "date": "2/2024",
+      "url": "https://losangelesreview.org/trapeze-artist-by-david-serafino/",
+      "pdfUrl": "uploads/publications/trapeze-artist.pdf",
+      "epubUrl": "uploads/publications/trapeze-artist.epub"
+    },
+    {
+      "id": "and3",
+      "title": "And3",
+      "outlet": "Radon Journal",
+      "date": "5/2024",
+      "url": "https://www.radonjournal.com/issue7/and3",
+      "pdfUrl": "uploads/publications/and3.pdf",
+      "epubUrl": "uploads/publications/and3.epub"
+    },
+    {
+      "id": "firebreak",
+      "title": "Firebreak",
+      "outlet": "Dulcet",
+      "date": "3/2025",
+      "url": "https://www.dulcetlitmag.com/david-serafino",
+      "pdfUrl": "uploads/publications/firebreak.pdf",
+      "epubUrl": "uploads/publications/firebreak.epub"
+    },
+    {
+      "id": "tommy-rock",
+      "title": "Tommy Rock",
+      "outlet": "Oyster River Pages",
+      "date": "6/2025",
+      "url": "https://www.oysterriverpages.com/tommy-rock",
+      "pdfUrl": "uploads/publications/tommy-rock.pdf",
+      "epubUrl": "uploads/publications/tommy-rock.epub"
+    },
+    {
+      "id": "metal-man-meets-ms-godiva",
+      "title": "Metal Man Meets Ms. Godiva",
+      "outlet": "The Page Gallery",
+      "date": "7/2025",
+      "url": "https://pagegalleryjournal.com/july/metal-man",
+      "pdfUrl": "uploads/publications/metal-man-meets-ms-godiva.pdf",
+      "epubUrl": "uploads/publications/metal-man-meets-ms-godiva.epub"
+    },
+    {
+      "id": "migration-season",
+      "title": "Migration Season",
+      "outlet": "Fiction on the Web UK",
+      "date": "7/2025",
+      "url": "https://www.fictionontheweb.co.uk/2025/07/migration-season-by-david-serafino.html",
+      "pdfUrl": "uploads/publications/migration-season.pdf",
+      "epubUrl": "uploads/publications/migration-season.epub"
+    },
+    {
+      "id": "bookseeker",
+      "title": "Bookseeker",
+      "outlet": "Gulmohur Quarterly",
+      "date": "9/2025",
+      "url": "https://www.gulmohurquarterly.com/short-fiction/bookseeker-david-serafino-issue-19",
+      "pdfUrl": "uploads/publications/bookseeker.pdf",
+      "epubUrl": "uploads/publications/bookseeker.epub"
+    },
+    {
+      "id": "transposition",
+      "title": "Transposition",
+      "outlet": "Fulcrum Review",
+      "date": "9/2025",
+      "url": "https://www.fulcrumreview.org/issue-4",
+      "pdfUrl": "uploads/publications/transposition.pdf",
+      "epubUrl": "uploads/publications/transposition.epub"
+    },
+    {
+      "id": "we-dont-need-no-water",
+      "title": "We Don’t Need No Water",
+      "outlet": "Chaotic Merge",
+      "date": "9/2025",
+      "url": "https://chaoticmergemagazine.com/issue-9/",
+      "pdfUrl": "uploads/publications/we-dont-need-no-water.pdf",
+      "epubUrl": "uploads/publications/we-dont-need-no-water.epub"
+    },
+    {
+      "id": "chloroquine",
+      "title": "Chloroquine",
+      "outlet": "The Mixtape Review",
+      "date": "10/2025",
+      "url": "https://theofficialmixtape.wixsite.com/the-mixtape-review/copy-of-love-didn-t-die-1",
+      "pdfUrl": "uploads/publications/chloroquine.pdf",
+      "epubUrl": "uploads/publications/chloroquine.epub"
+    },
+    {
+      "id": "island",
+      "title": "Island",
+      "outlet": "The Lit Nerds",
+      "date": "10/2025",
+      "url": "https://thelitnerds.com/2025/10/16/island/",
+      "pdfUrl": "uploads/publications/island.pdf",
+      "epubUrl": "uploads/publications/island.epub"
+    },
+    {
+      "id": "the-garden",
+      "title": "The Garden",
+      "outlet": "AGNI",
+      "date": "10/2025",
+      "url": "https://agnionline.bu.edu/about/our-people/authors/david-serafino/",
+      "pdfUrl": "uploads/publications/the-garden.pdf",
+      "epubUrl": "uploads/publications/the-garden.epub"
+    },
+    {
+      "id": "a-cat-and-his-man",
+      "title": "A Cat and His Man",
+      "outlet": "Gambling the Aisle",
+      "date": "12/2025",
+      "url": "https://www.gamblingtheaisle.com/monthly-publications/2c9ri8rrqsijpksr30m5xbtf43rybg",
+      "pdfUrl": "uploads/publications/a-cat-and-his-man.pdf",
+      "epubUrl": "uploads/publications/a-cat-and-his-man.epub"
+    },
+    {
+      "id": "asylum",
+      "title": "Asylum",
+      "outlet": "Muleskinner Journal",
+      "date": "12/2025",
+      "url": "https://www.muleskinnerjournal.com/s/Journal-Sixteen-Sabotage-FINAL-12-31-2025.pdf",
+      "pdfUrl": "uploads/publications/asylum.pdf",
+      "epubUrl": "uploads/publications/asylum.epub"
+    },
+    {
+      "id": "victimization-retreat",
+      "title": "Victimization Retreat",
+      "outlet": "Fiction on the Web UK",
+      "date": "3/2026",
+      "url": "https://www.fictionontheweb.co.uk/2026/03/",
+      "pdfUrl": "uploads/publications/victimization-retreat.pdf",
+      "epubUrl": "uploads/publications/victimization-retreat.epub"
+    }
+  ]
+}
